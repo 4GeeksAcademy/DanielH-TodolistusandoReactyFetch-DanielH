@@ -56,7 +56,8 @@ export const TodoList = () =>{
           })}
     </ul>
     }
-    <div className="btn-group" role="group" aria-label="Basic mixed styles example">
+    <hr></hr>
+    <div className="btn-group boton" role="group" aria-label="Basic mixed styles example">
         
         <button type="button" className="btn btn-warning" onClick={handleScrollToTop}>Ir al Inicio</button>
        
