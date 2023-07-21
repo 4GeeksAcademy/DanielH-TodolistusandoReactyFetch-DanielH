@@ -25,12 +25,18 @@ export const TodoList = () =>{
             setErrores("error: " + responses.status + " " + responses.statusText);
         }
 
+        
+        
+
     }
     useEffect(() => {
         fetchTodo();
+        console.log(todos.completed)
     }, [])
 
-    console.log(todos.completed)
+    const handleScrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      };
 
     return (
 <>
@@ -39,12 +45,22 @@ export const TodoList = () =>{
     {errores ? <p>{errores}</p> :
 
     <ul > 
-        { todos.map( (todo, index) => { 
-            return <li key={index}><strong>{todo.id}</strong> - {todo.title} </li>
-        })}
-       
+        {todos.map((todo, index) => {
+            const todoClassName = todo.completed ? "completed" : "pending";
+            return (
+              <li key={index} className={todoClassName}>
+                <strong>{todo.userId}</strong> - {todo.title} -{" "}
+                <span>{todo.completed ? "Completado" : "Pendiente"}</span>{" "}
+              </li>
+            );
+          })}
     </ul>
     }
+    <div className="btn-group" role="group" aria-label="Basic mixed styles example">
+        
+        <button type="button" className="btn btn-warning" onClick={handleScrollToTop}>Ir al Inicio</button>
+       
+    </div>
             
         </>
         
